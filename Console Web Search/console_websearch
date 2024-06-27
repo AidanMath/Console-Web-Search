@@ -1,0 +1,26 @@
+import webbrowser
+import sys
+websites_to_search=[
+    "reddit.com"
+    "stackoverflow.com"
+    "stackexchange.com"
+    "medium.com"
+]
+url = "https://www.google.com/search?=q"
+path = 'open -a /Applications/Google Chrome'
+webbrowser.get(path).open(url)
+
+def message_inerpreter():
+    query= sys.argv[1:]
+    return " ".join(query)
+
+def create_filter():
+    filter= '('
+    for index, website, in enumerate(websites_to_search):
+        filter += 'site: '+ website
+        if index == len(websites_to_search)-1:
+            filter += ')'
+        else:
+            filter += " OR "
+    return filter
+
